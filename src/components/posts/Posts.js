@@ -22,7 +22,7 @@ class Posts extends Component {
               <h4 style={{textAlign: 'center'}}>Posts</h4>
               <br/>
               <div style={{ height: '500px', overflowY: 'scroll' }}>
-                  {postsByCreator.map(post => <PostCard key={post.id} post={post} />)}
+                  {postsByCreator.map(post => <PostCard currentUser={this.props.currentUser} key={post.id} post={post} />)}
               </div>
           </div>
         )

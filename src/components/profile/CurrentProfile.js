@@ -20,7 +20,7 @@ class CurrentProfile extends Component {
                         <div className="row">
                             <div className="col-lg-2"/>
                             <div className="col-lg-8">
-                                <Posts creator={this.props.data.currentUser.id}/>
+                                <Posts currentUser={true} creator={this.props.data.currentUser.id}/>
                             </div>
                             <div className="col-lg-2"/>
                         </div>

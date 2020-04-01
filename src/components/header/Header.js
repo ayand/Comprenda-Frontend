@@ -23,6 +23,7 @@ class Header extends Component {
         if (currentUser) {
             return (
                 <Nav className="ml-auto">
+                    <Nav.Link href="/create_post">Create Post</Nav.Link>
                     {currentUser.profile && <Nav.Link href="/profile">My Profile</Nav.Link>}
                     <Nav.Link onClick={this.onLogoutClick.bind(this)}>Logout</Nav.Link>
                 </Nav>
