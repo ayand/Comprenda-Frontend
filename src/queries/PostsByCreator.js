@@ -6,7 +6,8 @@ export default gql`
             id,
             title,
             description,
-            language
+            language,
+            ready
         }
     }
 `;

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
 import query from '../../queries/GetPost';
+import Question from './questions/Question';
 
 class Post extends Component {
 
@@ -8,20 +9,26 @@ class Post extends Component {
         if (!this.props.data.post) {
             return <div>Loading...</div>
         }
-        console.log(this.props.data);
-        const { title, creator, body, description } = this.props.data.post;
+        const { title, creator, body, description, questions } = this.props.data.post;
         return (
           <div>
               <br/>
-              <h3 style={{textAlign: 'center'}}>{title}</h3>
-              <h5 style={{textAlign: 'center'}}>{creator.profile.name}</h5>
-              <br/>
               <div className="container">
+                  <h3>{title}</h3>
+                  <br/>
+                  <h5>Created by {creator.profile.name}</h5>
+                  <br/>
                   <h4>Description</h4>
                   <p>{description}</p>
                   <h4>Story</h4>
                   <br/>
-                  {body.split(/[\r\n]/g).map((paragraph, i) => <p style={{textAlign: 'justify'}}  key={i}>{paragraph}</p>)}
+                  <div className="container">
+                      {body.split(/[\r\n]/g).map((paragraph, i) => <p style={{textAlign: 'justify'}}  key={i}>{paragraph}</p>)}
+                  </div>
+                  <br/>
+                  <h5 style={{textAlign: 'center'}}>Questions</h5>
+                  <br/>
+                  {questions.map((question, i) => <Question key={question.id} question={question} index={i + 1}/>)}
               </div>
           </div>
         )
@@ -30,5 +37,5 @@ class Post extends Component {
 }
 
 export default graphql(query, {
-  options: (props) => { console.log(props); return { variables: { id: props.match.params.id } } }
+  options: (props) => { return { variables: { id: props.match.params.id } } }
 })(Post);

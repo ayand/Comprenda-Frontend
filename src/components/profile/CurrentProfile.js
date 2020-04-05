@@ -17,12 +17,8 @@ class CurrentProfile extends Component {
                         <ProfileDisplay profile={profile} showEdit={true}/>
                     </div>
                     <div className="col-lg-7">
-                        <div className="row">
-                            <div className="col-lg-2"/>
-                            <div className="col-lg-8">
-                                <Posts currentUser={true} creator={this.props.data.currentUser.id}/>
-                            </div>
-                            <div className="col-lg-2"/>
+                        <div className="container">
+                            <Posts currentUser={true} creator={this.props.data.currentUser.id} showInProgress={true}/>
                         </div>
                     </div>
                 </div>

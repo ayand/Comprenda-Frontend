@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
-import CardDeck from 'react-bootstrap/CardDeck';
 
 import query from '../../queries/PostsByCreator';
 import PostCard from './PostCard';
@@ -22,7 +21,7 @@ class Posts extends Component {
               <h4 style={{textAlign: 'center'}}>Posts</h4>
               <br/>
               <div style={{ height: '500px', overflowY: 'scroll' }}>
-                  {postsByCreator.map(post => <PostCard currentUser={this.props.currentUser} key={post.id} post={post} />)}
+                  {postsByCreator.filter(post => this.props.showInProgress ? true : post.ready).map(post => <PostCard currentUser={this.props.currentUser} key={post.id} post={post} />)}
               </div>
           </div>
         )
@@ -31,5 +30,5 @@ class Posts extends Component {
 }
 
 export default graphql(query, {
-  options: ({ creator }) => { return { variables: { creator } } }
+  options: ({ creator, showInProgress }) => { return { variables: { creator, showInProgress } } }
 })(Posts);

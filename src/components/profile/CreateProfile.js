@@ -42,15 +42,9 @@ class CreateProfile extends Component {
             <div style={{textAlign: 'center'}}>
                 <br/>
                 <br/>
-                <div className="row">
-                    <div className="col-lg-4">
-                    </div>
-                    <div className="col-lg-4">
-                        <h3>Create Profile</h3>
-                        <ProfileForm editing={false} onSubmit={this.onSubmit.bind(this)}/>
-                    </div>
-                    <div className="col-lg-4">
-                    </div>
+                <div className="container">
+                    <h3>Create Profile</h3>
+                    <ProfileForm editing={false} onSubmit={this.onSubmit.bind(this)}/>
                 </div>
 
             </div>

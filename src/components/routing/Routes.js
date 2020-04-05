@@ -13,6 +13,7 @@ import CreateProfile from '../profile/CreateProfile';
 import EditProfile from '../profile/EditProfile';
 
 import CreatePost from '../posts/CreatePost';
+import EditPostContainer from '../posts/EditPostContainer';
 import Post from '../posts/Post';
 
 const Routes = () => {
@@ -28,6 +29,7 @@ const Routes = () => {
               <Route exact path="/edit_profile" component={requireAuth(EditProfile)}/>
               <Route exact path="/create_post" component={requireAuth(CreatePost)}/>
               <Route exact path="/posts/:id" component={requireAuth(Post)}/>
+              <Route exact path="/edit_post/:id" component={requireAuth(EditPostContainer)}/>
           </Switch>
       </div>
     )

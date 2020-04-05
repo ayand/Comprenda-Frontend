@@ -14,6 +14,11 @@ export default gql`
                   id,
                   name
                 }
+            },
+            questions {
+                id,
+                text,
+                choices
             }
         }
         currentUser {

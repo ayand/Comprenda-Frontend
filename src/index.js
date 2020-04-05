@@ -30,6 +30,7 @@ const client = new ApolloClient({
   }),
   cache: new InMemoryCache(),
   connectToDevTools: true,
+  dataIdFromObject: o => o.id
 })
 
 const Root = () => {
