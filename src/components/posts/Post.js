@@ -21,8 +21,7 @@ class Post extends Component {
                   <h4>Description</h4>
                   <p>{description}</p>
                   <h4>Story</h4>
-                  <br/>
-                  <div className="container">
+                  <div className="jumbotron" style={{backgroundColor: '#b3f786', paddingTop: '25px', paddingBottom: '25px'}}>
                       {body.split(/[\r\n]/g).map((paragraph, i) => <p style={{textAlign: 'justify'}}  key={i}>{paragraph}</p>)}
                   </div>
                   <br/>

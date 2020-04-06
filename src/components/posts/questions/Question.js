@@ -18,7 +18,7 @@ class Question extends Component {
         const { question, index } = this.props;
         const { id, text, choices } = question;
         return (
-            <div>
+            <div className="jumbotron" style={{backgroundColor: '#b3f786', paddingTop: '25px', paddingBottom: '25px'}}>
                 <h5>{index}. {text}</h5>
                 <Form>
                     <fieldset>
@@ -29,7 +29,6 @@ class Question extends Component {
                         </Form.Group>
                     </fieldset>
                 </Form>
-                <br/>
             </div>
         );
     }

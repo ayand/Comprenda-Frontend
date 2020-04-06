@@ -9,7 +9,7 @@ class ProfileDisplay extends Component {
           <div style={{textAlign: 'center'}}>
               <h4>Profile</h4>
               <br/>
-              <Card>
+              <Card style={{ backgroundColor: '#b3f786' }}>
                   <Card.Body>
                       <Card.Title>Name</Card.Title>
                       <Card.Text>{name}</Card.Text>
