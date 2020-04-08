@@ -15,6 +15,9 @@ import EditProfile from '../profile/EditProfile';
 import CreatePost from '../posts/CreatePost';
 import EditPostContainer from '../posts/EditPostContainer';
 import Post from '../posts/Post';
+import PostSearch from '../posts/PostSearch';
+
+import Search from '../search/Search';
 
 const Routes = () => {
     return (
@@ -30,6 +33,8 @@ const Routes = () => {
               <Route exact path="/create_post" component={requireAuth(CreatePost)}/>
               <Route exact path="/posts/:id" component={requireAuth(Post)}/>
               <Route exact path="/edit_post/:id" component={requireAuth(EditPostContainer)}/>
+              <Route exact path="/search" component={requireAuth(Search)}/>
+              <Route exact path="/search/posts/:search_term" component={requireAuth(PostSearch)}/>
           </Switch>
       </div>
     )

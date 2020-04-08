@@ -20,14 +20,25 @@ class Post extends Component {
                   <br/>
                   <h4>Description</h4>
                   <p>{description}</p>
-                  <h4>Story</h4>
-                  <div className="jumbotron" style={{backgroundColor: '#b3f786', paddingTop: '25px', paddingBottom: '25px'}}>
-                      {body.split(/[\r\n]/g).map((paragraph, i) => <p style={{textAlign: 'justify'}}  key={i}>{paragraph}</p>)}
+                  <br/>
+                  <div className="row">
+                      <div className="col-lg-7">
+                          <h4>Story</h4>
+                          <br/>
+                          <div className="jumbotron" style={{backgroundColor: '#b3f786', paddingTop: '25px', paddingBottom: '25px'}}>
+                              <div style={{ height: '440px', overflowY: 'scroll' }}>
+                                  {body.split(/[\r\n]/g).map((paragraph, i) => <p style={{textAlign: 'justify'}}  key={i}>{paragraph}</p>)}
+                              </div>
+                          </div>
+                      </div>
+                      <div className="col-lg-5">
+                          <h4 style={{textAlign: 'center'}}>Questions</h4>
+                          <br/>
+                          <div style={{ height: '500px', overflowY: 'scroll' }}>
+                              {questions.map((question, i) => <Question key={question.id} question={question} index={i + 1}/>)}
+                          </div>
+                      </div>
                   </div>
-                  <br/>
-                  <h5 style={{textAlign: 'center'}}>Questions</h5>
-                  <br/>
-                  {questions.map((question, i) => <Question key={question.id} question={question} index={i + 1}/>)}
               </div>
           </div>
         )

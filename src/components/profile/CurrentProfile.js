@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ProfileDisplay from './ProfileDisplay';
-import Posts from '../posts/Posts';
+import Posts from '../posts/PostsByCreator';
 
 class CurrentProfile extends Component {
 

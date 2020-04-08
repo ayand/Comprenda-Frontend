@@ -4,7 +4,7 @@ import { graphql } from 'react-apollo';
 import query from '../../queries/PostsByCreator';
 import PostCard from './PostCard';
 
-class Posts extends Component {
+class PostsByCreator extends Component {
 
     render() {
         console.log(this.props.creator);
@@ -31,4 +31,4 @@ class Posts extends Component {
 
 export default graphql(query, {
   options: ({ creator, showInProgress }) => { return { variables: { creator, showInProgress } } }
-})(Posts);
+})(PostsByCreator);

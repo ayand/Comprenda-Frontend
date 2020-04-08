@@ -1,10 +1,14 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import query from '../../queries/CurrentUser';
 import mutation from '../../mutations/Logout';
 import { graphql } from 'react-apollo';
 
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import FormControl from 'react-bootstrap/FormControl';
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
+import { withRouter } from 'react-router-dom';
 
 class Header extends Component {
 
@@ -23,8 +27,13 @@ class Header extends Component {
         if (currentUser) {
             return (
                 <Nav className="ml-auto">
-                    <Nav.Link href="/create_post">Create Post</Nav.Link>
-                    {currentUser.profile && <Nav.Link href="/profile">My Profile</Nav.Link>}
+                    {currentUser.profile && (
+                      <Fragment>
+                          <Nav.Link href="/search">Search</Nav.Link>
+                          <Nav.Link href="/create_post">Create Post</Nav.Link>
+                          <Nav.Link href="/profile">My Profile</Nav.Link>
+                      </Fragment>
+                    )}
                     <Nav.Link onClick={this.onLogoutClick.bind(this)}>Logout</Nav.Link>
                 </Nav>
             )
@@ -50,4 +59,4 @@ class Header extends Component {
     }
 }
 
-export default graphql(query)(graphql(mutation)(Header));
+export default withRouter(graphql(query)(graphql(mutation)(Header)));

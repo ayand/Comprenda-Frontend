@@ -10,15 +10,13 @@ class Question extends Component {
 
     answerQuestion(answer) {
         this.setState({ answer });
-        console.log(this.props.question.id);
-        console.log(answer);
     }
 
     render() {
         const { question, index } = this.props;
-        const { id, text, choices } = question;
+        const { text, choices } = question;
         return (
-            <div className="jumbotron" style={{backgroundColor: '#b3f786', paddingTop: '25px', paddingBottom: '25px'}}>
+            <div className="jumbotron" style={{backgroundColor: '#cefab1', paddingTop: '25px', paddingBottom: '25px'}}>
                 <h5>{index}. {text}</h5>
                 <Form>
                     <fieldset>
