@@ -5,7 +5,8 @@ export default gql`
         profile(id: $id) {
           id,
           name,
-          bio
+          bio,
+          languages
         }
     }
 `

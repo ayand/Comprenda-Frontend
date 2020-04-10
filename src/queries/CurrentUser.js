@@ -8,7 +8,8 @@ export default gql`
       profile {
         id,
         name,
-        bio
+        bio,
+        languages
       }
     }
   }

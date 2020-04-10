@@ -3,9 +3,6 @@ import query from '../../queries/CurrentUser';
 import mutation from '../../mutations/Logout';
 import { graphql } from 'react-apollo';
 
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import FormControl from 'react-bootstrap/FormControl';
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import { withRouter } from 'react-router-dom';

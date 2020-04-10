@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
-import FormControl from 'react-bootstrap/FormControl';
 import {withRouter} from 'react-router-dom';
 
 class SearchForm extends Component {
@@ -17,7 +16,6 @@ class SearchForm extends Component {
         const { searchTerm } = this.state;
         this.setState({ searchTerm: '' });
         console.log(searchTerm);
-        //console.log(this.props);
         this.props.history.push(`/search/${this.props.entity.toLowerCase()}/${searchTerm}`);
     }
 

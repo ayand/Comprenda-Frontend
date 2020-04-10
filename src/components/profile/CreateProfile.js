@@ -21,11 +21,9 @@ class CreateProfile extends Component {
         }
     }
 
-    onSubmit({ name, bio }) {
-        console.log(name);
-        console.log(bio);
+    onSubmit({ name, bio, languages }) {
         this.props.mutate({
-            variables: { name, bio },
+            variables: { name, bio, languages },
             refetchQueries: [{ query }]
         }).catch(res => {
             const errors = res.graphQLErrors.map(err => err.message);

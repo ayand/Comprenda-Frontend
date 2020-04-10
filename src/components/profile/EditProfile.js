@@ -13,6 +13,7 @@ class EditProfile extends Component {
     }
 
     componentDidUpdate(prevProps) {
+        console.log(this.props.data.currentUser.profile);
         if (this.props.data.currentUser == null) {
             this.props.history.push('/login');
         } else if (this.props.data.currentUser.profile) {
@@ -20,9 +21,10 @@ class EditProfile extends Component {
         }
     }
 
-    onSubmit({ name, bio }) {
+    onSubmit({ name, bio, languages }) {
+        console.log("Editing")
         this.props.mutate({
-            variables: { name, bio },
+            variables: { name, bio, languages },
             refetchQueries: [{ query }]
         }).catch(res => {
             const errors = res.graphQLErrors.map(err => err.message);
@@ -41,7 +43,7 @@ class EditProfile extends Component {
                 <br/>
                 <br/>
                 <div className="container">
-                    <h3>Create Profile</h3>
+                    <h3>Edit Profile</h3>
                     <ProfileForm editing={true} profile={this.props.data.currentUser.profile} onSubmit={this.onSubmit.bind(this)}/>
                 </div>
             </div>
