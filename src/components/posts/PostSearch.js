@@ -30,7 +30,7 @@ const PostSearch = (props) => {
         getPosts({ variables: { searchString: props.match.params.search_term, index } })
     }
 
-    if (loading && posts.length == 0) {
+    if (loading && posts.length === 0) {
         return (
           <div style={{textAlign: 'center'}}>
               <br/>

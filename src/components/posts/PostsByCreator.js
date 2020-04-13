@@ -20,8 +20,10 @@ class PostsByCreator extends Component {
           <div>
               <h4 style={{textAlign: 'center'}}>Posts</h4>
               <br/>
-              <div style={{ height: '500px', overflowY: 'scroll' }}>
-                  {postsByCreator.map(post => <PostCard currentUser={this.props.currentUser} key={post.id} post={post} />)}
+              <div className="container" style={{ border: '2px solid green', paddingTop: '10px', paddingBottom: '10px' }}>
+                  <div style={{height: '350px', overflowY: 'scroll'}}>
+                      {postsByCreator.map(post => <PostCard currentUser={this.props.currentUser} key={post.id} post={post} />)}
+                  </div>
               </div>
           </div>
         )

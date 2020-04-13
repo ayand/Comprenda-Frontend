@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ProfileDisplay from './ProfileDisplay';
-import Posts from '../posts/PostsByCreator';
+import PostsByCreator from '../posts/PostsByCreator';
+import SubmissionsByUser from '../submissions/Submissions';
 
 class CurrentProfile extends Component {
 
@@ -8,17 +9,24 @@ class CurrentProfile extends Component {
         if (!this.props.data.currentUser) {
             return <div>Loading...</div>
         }
+        console.log(this.props.data.currentUser);
         const { profile } = this.props.data.currentUser;
         return (
             <div>
                 <br/>
+                <ProfileDisplay profile={profile} showEdit={true}/>
+                <br/>
                 <div className="row">
-                    <div className="col-lg-5">
-                        <ProfileDisplay profile={profile} showEdit={true}/>
-                    </div>
-                    <div className="col-lg-7">
+                    <div className="col-lg-6">
                         <div className="container">
-                            <Posts currentUser={true} creator={this.props.data.currentUser.id} showInProgress={true}/>
+                            <br/>
+                            <PostsByCreator currentUser={true} creator={this.props.data.currentUser.id} showInProgress={true}/>
+                        </div>
+                    </div>
+                    <div className="col-lg-6">
+                        <div className="container">
+                            <br/>
+                            <SubmissionsByUser user={this.props.data.currentUser.id} />
                         </div>
                     </div>
                 </div>
