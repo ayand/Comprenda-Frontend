@@ -4,9 +4,8 @@ import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { graphql } from 'react-apollo';
-import mutation from '../../../mutations/AddQuestion';
-import query from '../../../queries/GetPost';
+/*import mutation from '../../../mutations/AddQuestion';
+import query from '../../../queries/GetPost';*/
 
 class AddQuestion extends Component {
 
@@ -25,14 +24,18 @@ class AddQuestion extends Component {
         event.preventDefault();
         //console.log(this.state);
         const { text, answer, choices } = this.state;
-        const post = this.props.id;
-        this.props.mutate({
+        //const post = this.props.id;
+        console.log(this.state);
+        this.props.onSubmit({ text, answer, choices });
+        this.setState({ text: '', answer: '', choices: ['', '', '', ''] });
+        this.props.closeFunc();
+        /*this.props.mutate({
             variables: { text, answer, choices, post },
             refetchQueries: [{ query, variables: { id: post } }]
         }).then(() => {
             this.setState({ text: '', answer: '', choices: ['', '', '', ''] });
             this.props.closeFunc();
-        })
+        })*/
     }
 
     addErrorMessages(errorMessages) {
@@ -83,4 +86,5 @@ class AddQuestion extends Component {
     }
 }
 
-export default graphql(mutation)(AddQuestion);
+//export default graphql(mutation)(AddQuestion);
+export default AddQuestion;

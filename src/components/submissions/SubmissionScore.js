@@ -32,7 +32,7 @@ class SubmissionScore {
                 } else if (amount >= 0.8) {
                     return "#F7F14A"
                 } else if (amount >= 0.7) {
-                    return "#F7954A"
+                    return "#FF7D19"
                 }
                 return "#F74A4A";
             })

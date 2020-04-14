@@ -1,8 +1,8 @@
 import gql from 'graphql-tag';
 
 export default gql`
-    mutation EditPost($id: ID, $title: String, $body: String, $description: String) {
-        editPost(id: $id, title: $title, body: $body, description: $description) {
+    mutation EditPost($post: PostInputType) {
+        editPost(post: $post) {
             id,
             title,
             body,

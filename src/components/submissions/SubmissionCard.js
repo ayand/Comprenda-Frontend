@@ -20,6 +20,7 @@ class SubmissionCard extends Component {
                           <svg width="100" height="100" ref={svg => this.svg = svg} />
                       </div>
                       <div className="col-lg-9">
+                          <br/>
                           <Card.Title>{this.props.submission.post.title}</Card.Title>
                           <br/>
                           <Card.Subtitle> Submitted on {`${d.getMonth()+1}/${d.getDate()}/${d.getFullYear()} ${d.getHours()}:${d.getMinutes()}`}</Card.Subtitle>

@@ -12,7 +12,7 @@ class EditPostContainer extends Component {
                   if (error) return `Error! ${error}`;
                   const { post, currentUser } = data;
                   return (
-                      <EditPost post={post} history={this.props.history}/>
+                      <EditPost post={post}/>
                   );
               }}
             </Query>
