@@ -9,8 +9,8 @@ class Question extends Component {
     }
 
     answerQuestion(answer) {
-        this.setState({ answer });
         this.props.onAnswer({ question: this.props.question.id, answer });
+        this.setState({ answer });
     }
 
     render() {

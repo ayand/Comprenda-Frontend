@@ -44,9 +44,13 @@ class Post extends Component {
             this.setState({ answers: this.state.answers.concat([question]) });
         } else {
             const answers = this.state.answers.slice();
-            answers.filter(answer => answer.question === question.question)[0].answer = question.answer;
+            for (var i = 0; i < answers.length; i++) {
+                if (answers[i].question === question.question) {
+                    answers[i].answer = question.answer;
+                    console.log(answers[i]);
+                }
+            }
             this.setState({ answers })
-            console.log(answers);
         }
     }
 
