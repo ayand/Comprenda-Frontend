@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
-import createPostQuery from '../../queries/CreatePost';
 import postsQuery from '../../queries/PostsByCreator';
 import mutation from '../../mutations/CreatePost';
 import PostForm from '../forms/PostForm';
-
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
 
 class CreatePost extends Component {
 

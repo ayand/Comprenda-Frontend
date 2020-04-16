@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import {graphql} from 'react-apollo';
 import mutation from '../../mutations/EditPost';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
 import PostForm from '../forms/PostForm';
-import Question from './questions/Question';
 import {withRouter} from 'react-router-dom';
 import query from '../../queries/GetPost';
 
