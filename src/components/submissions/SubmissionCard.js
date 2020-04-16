@@ -22,7 +22,7 @@ class SubmissionCard extends Component {
                           <br/>
                           <Card.Title><Link to={`/submissions/${this.props.submission.id}`}>{this.props.submission.post.title}</Link></Card.Title>
                           <br/>
-                          <Card.Subtitle> Submitted on {`${d.getMonth()+1}/${d.getDate()}/${d.getFullYear()} ${d.getHours()}:${d.getMinutes()}`}</Card.Subtitle>
+                          <Card.Subtitle> Submitted on {`${d.getMonth()+1}/${d.getDate()}/${d.getFullYear()} ${d.getHours()}:${(d.getMinutes() >= 10) ? d.getMinutes() : ("0" + d.getMinutes())}`}</Card.Subtitle>
                       </div>
                   </div>
               </Card.Body>
