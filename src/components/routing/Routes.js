@@ -11,6 +11,7 @@ import Login from '../auth/Login';
 import CurrentProfile from '../profile/CurrentProfile';
 import CreateProfile from '../profile/CreateProfile';
 import EditProfile from '../profile/EditProfile';
+import ProfileSearch from '../profile/ProfileSearch';
 
 import CreatePost from '../posts/CreatePost';
 import EditPostContainer from '../posts/EditPostContainer';
@@ -37,6 +38,7 @@ const Routes = () => {
               <Route exact path="/edit_post/:id" component={requireAuth(EditPostContainer)}/>
               <Route exact path="/search" component={requireAuth(Search)}/>
               <Route exact path="/search/posts/:search_term" component={requireAuth(PostSearch)}/>
+              <Route exact path="/search/profiles/:search_term" component={requireAuth(ProfileSearch)}/>
               <Route exact path="/submissions/:id" component={requireAuth(Submission)}/>
           </Switch>
       </div>

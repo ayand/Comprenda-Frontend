@@ -3,7 +3,7 @@ import SearchForm from '../forms/SearchForm';
 
 class Search extends Component {
     render() {
-        const entities = ["Posts"];
+        const entities = ["Posts", "Profiles"];
         return (
           <div className="container">
               <br/>

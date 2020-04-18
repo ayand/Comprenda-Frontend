@@ -1,36 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import { useLazyQuery } from '@apollo/react-hooks';
-import query from '../../queries/GetPosts';
-import PostCard from './PostCard';
+import query from '../../queries/GetProfiles';
+import ProfileCard from './ProfileCard';
 
 import Button from 'react-bootstrap/Button';
 
-const PostSearch = (props) => {
+const ProfileSearch = (props) => {
     //console.log(props.match.params.search_term);
     const [index, setIndex] = useState(1);
-    const [posts, setPosts] = useState([]);
+    const [profiles, setProfiles] = useState([]);
     const [more, setMore] = useState(true);
-    const [getPosts, { loading, data }] = useLazyQuery(query);
+    const [getProfiles, { loading, data }] = useLazyQuery(query);
 
     useEffect(() => {
-        getPosts({ variables: { searchString: props.match.params.search_term, index: 1 } })
+        getProfiles({ variables: { searchString: props.match.params.search_term, index: 1 } })
     }, [])
 
     useEffect(() => {
-      if (data && data.posts) {
-          if (data.posts.length < 10) {
+      if (data && data.profiles) {
+          if (data.profiles.length < 10) {
               setMore(false);
           }
-          setPosts(posts.concat(data.posts));
+          setProfiles(profiles.concat(data.profiles));
           setIndex(index + 1);
       }
     }, [data])
 
-    const getMorePosts = () => {
-        getPosts({ variables: { searchString: props.match.params.search_term, index } })
+    const getMoreProfiles = () => {
+        getProfiles({ variables: { searchString: props.match.params.search_term, index } })
     }
 
-    if (loading && posts.length === 0) {
+    if (loading && profiles.length === 0) {
         return (
           <div style={{textAlign: 'center'}}>
               <br/>
@@ -43,13 +43,13 @@ const PostSearch = (props) => {
             <br/>
             <h3 style={{textAlign: 'center'}}>Search Results for '{props.match.params.search_term}'</h3>
             <br/>
-            {posts.map((post) => <PostCard key={post.id} post={post} />)}
+            {profiles.map((profile) => <ProfileCard key={profile.id} profile={profile} />)}
             <br/>
             <div style={{textAlign: 'center'}}>
-                { more && <Button variant="success" onClick={() => { getMorePosts(); }}>More</Button>}
+                { more && <Button variant="success" onClick={() => { getMoreProfiles(); }}>More</Button>}
             </div>
         </div>
     )
 }
 
-export default PostSearch;
+export default ProfileSearch;
