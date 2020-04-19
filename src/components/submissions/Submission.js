@@ -3,8 +3,27 @@ import query from '../../queries/GetSubmission';
 import { graphql } from 'react-apollo';
 import SubmissionScore from './SubmissionScore';
 import Answer from './answers/Answer';
+import AnswerDetail from './answers/AnswerDetail';
 
 class Submission extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = { currentAnswer: null, showModal: false };
+    }
+
+    open() {
+        this.setState({ showModal: true });
+    }
+
+    close() {
+        this.setState({ showModal: false });
+    }
+
+    showAnswer(currentAnswer) {
+        this.setState({ currentAnswer });
+        this.open();
+    }
 
     componentDidMount() {
         if (this.props.data.submission) {
@@ -26,7 +45,6 @@ class Submission extends Component {
         if (!this.props.data.submission) {
             return <div>Loading...</div>
         }
-        //console.log(this.props.data.submission);
         const d = new Date(this.props.data.submission.submissionTime);
         console.log("Rendered");
         return (
@@ -42,8 +60,9 @@ class Submission extends Component {
                       <br/>
                   </div>
                   <div className="container">
-                      {this.props.data.submission.answers.map((answer) => { return <Answer key={answer.id} answer={answer}/> })}
+                      {this.props.data.submission.answers.map((answer) => { return <Answer key={answer.id} answer={answer} openFunc={this.showAnswer.bind(this)}/> })}
                   </div>
+                  <AnswerDetail answer={this.state.currentAnswer} body={this.props.data.submission.post.body} show={this.state.showModal} closeFunc={this.close.bind(this)}/>
               <br/>
           </div>
         )

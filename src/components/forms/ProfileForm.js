@@ -35,7 +35,7 @@ class ProfileForm extends Component {
 
     render() {
         if (!this.props.data.languages) {
-            return <p>Loading...</p>
+            return <p>Loading Create Post...</p>
         }
         return (
           <Form onSubmit={this.onSubmit.bind(this)}>

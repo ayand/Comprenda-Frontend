@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
-import query from '../../queries/GetPost';
+import getPost from '../../queries/GetPost';
+import PostBody from './PostBody';
 import Question from './questions/Question';
 import Button from 'react-bootstrap/Button';
 import mutation from '../../mutations/CreateSubmission';
@@ -10,7 +11,6 @@ class Post extends Component {
     constructor(props) {
         super(props);
         this.state = { post: '', answers: [], errors: [] }
-        console.log(this.state);
     }
 
     componentDidUpdate(prevProps) {
@@ -23,16 +23,13 @@ class Post extends Component {
         console.log(this.state);
         const { post, answers } = this.state;
         answers.sort((a, b) => a.question - b.question)
-        //console.log()
         this.props.mutate({
             variables: { submission: { post, answers } }
         })
         .then(({ data }) => this.props.history.push(`/submissions/${data.createSubmission.id}`))
         .catch(res => {
-            console.log(res);
             if (res.graphQLErrors) {
               const errors = res.graphQLErrors.map(err => err.message);
-              console.log(errors);
               this.setState({ errors })
             }
         })
@@ -74,11 +71,7 @@ class Post extends Component {
                       <div className="col-lg-7">
                           <h4>Story</h4>
                           <br/>
-                          <div className="jumbotron" style={{backgroundColor: '#b3f786', paddingTop: '25px', paddingBottom: '25px'}}>
-                              <div style={{ height: '440px', overflowY: 'scroll' }}>
-                                  {body.split(/[\r\n]/g).map((paragraph, i) => <p style={{textAlign: 'justify'}}  key={i}>{paragraph}</p>)}
-                              </div>
-                          </div>
+                          <PostBody body={body}/>
                       </div>
                       <div className="col-lg-5">
                           <h4 style={{textAlign: 'center'}}>Questions</h4>
@@ -97,6 +90,6 @@ class Post extends Component {
 
 }
 
-export default graphql(mutation)(graphql(query, {
+export default graphql(mutation)(graphql(getPost(true), {
   options: (props) => { return { variables: { id: props.match.params.id } } }
 })(Post));

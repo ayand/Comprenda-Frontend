@@ -43,6 +43,7 @@ class CreatePost extends Component {
 
 
     render() {
+        console.log(this.props.data.currentUser);
         return (
             <div>
                 <br/>

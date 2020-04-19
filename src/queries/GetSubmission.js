@@ -8,7 +8,8 @@ export default gql`
             submissionTime,
             post {
                 id,
-                title
+                title,
+                body
             },
             answers {
                 id,

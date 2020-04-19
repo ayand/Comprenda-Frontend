@@ -1,7 +1,13 @@
 import React, { Component, Fragment } from 'react';
+import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
 class Answer extends Component {
+
+    openFunc() {
+        this.props.openFunc(this.props.answer);
+    }
+
     render() {
         const { answer, isCorrect, question } = this.props.answer;
         return (
@@ -20,6 +26,11 @@ class Answer extends Component {
                         </Fragment>
                       )}
                   </Card.Body>
+                  {this.props.openFunc && (
+                      <Card.Footer>
+                        <Button style={{ color: '#4ba310' }} variant="link" onClick={this.openFunc.bind(this)}>Explore</Button>
+                      </Card.Footer>
+                  )}
               </Card>
               <br/>
           </Fragment>

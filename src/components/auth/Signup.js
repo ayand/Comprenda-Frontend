@@ -18,7 +18,11 @@ class Signup extends Component {
     componentDidUpdate(prevProps) {
         if (this.props.data.currentUser && !prevProps.data.currentUser) {
             // redirect to dashboard
-            this.props.history.push('/create_profile')
+            if (!this.props.data.currentUser.profile) {
+                this.props.history.push('/create_profile');
+            } else {
+                this.props.history.push('/dashboard');
+            }
         }
     }
 

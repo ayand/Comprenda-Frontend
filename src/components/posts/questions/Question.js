@@ -17,7 +17,7 @@ class Question extends Component {
         const { question, index } = this.props;
         const { text, choices } = question;
         return (
-            <div className="jumbotron" style={{backgroundColor: '#cefab1', paddingTop: '25px', paddingBottom: '25px'}}>
+            <div className="jumbotron" style={{backgroundColor: '#cefab1', border: '3px solid #4ba310', paddingTop: '25px', paddingBottom: '25px'}}>
                 <h5>{index}. {text}</h5>
                 <Form>
                     <fieldset>

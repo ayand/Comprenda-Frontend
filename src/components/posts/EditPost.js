@@ -3,7 +3,7 @@ import {graphql} from 'react-apollo';
 import mutation from '../../mutations/EditPost';
 import PostForm from '../forms/PostForm';
 import {withRouter} from 'react-router-dom';
-import query from '../../queries/GetPost';
+import getPost from '../../queries/GetPost';
 
 class EditPost extends Component {
 
@@ -22,7 +22,7 @@ class EditPost extends Component {
         const newPost = { id, title, body, description, questions }
         this.props.mutate({
             variables: { post: newPost },
-            refetchQueries: [{ query, variables: { id } }]
+            refetchQueries: [{ query: getPost(true), variables: { id } }]
         })
         .then(() => { this.props.history.push(`/posts/${id}`) })
         .catch(res => {

@@ -6,8 +6,5 @@ export default gql`
             id,
             language
         }
-        currentUser {
-            id
-        }
     }
 `;

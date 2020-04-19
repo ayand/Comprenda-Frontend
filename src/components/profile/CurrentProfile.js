@@ -9,7 +9,6 @@ class CurrentProfile extends Component {
         if (!this.props.data.currentUser) {
             return <div>Loading...</div>
         }
-        console.log(this.props.data.currentUser);
         const { profile } = this.props.data.currentUser;
         return (
             <div>

@@ -42,7 +42,7 @@ class PostForm extends Component {
     }
 
     render() {
-        if (!this.props.data.languages || !this.props.data.currentUser) {
+        if (!this.props.data.languages) {
             return <div>Loading...</div>
         }
         return (

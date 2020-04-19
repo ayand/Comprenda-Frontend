@@ -13,7 +13,6 @@ class EditProfile extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        console.log(this.props.data.currentUser.profile);
         if (this.props.data.currentUser == null) {
             this.props.history.push('/login');
         } else if (this.props.data.currentUser.profile) {
