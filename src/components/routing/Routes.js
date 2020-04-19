@@ -7,6 +7,7 @@ import Landing from '../Landing';
 
 import Signup from '../auth/Signup';
 import Login from '../auth/Login';
+import NotAuthorized from '../auth/NotAuthorized';
 
 import CurrentProfile from '../profile/CurrentProfile';
 import CreateProfile from '../profile/CreateProfile';
@@ -42,6 +43,7 @@ const Routes = () => {
               <Route exact path="/search/posts/:search_term" component={requireAuth(PostSearch)}/>
               <Route exact path="/search/profiles/:search_term" component={requireAuth(ProfileSearch)}/>
               <Route exact path="/submissions/:id" component={requireAuth(Submission)}/>
+              <Route exact path="/not_authorized" component={requireAuth(NotAuthorized)}/>
           </Switch>
       </div>
     )

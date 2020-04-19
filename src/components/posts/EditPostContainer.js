@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import getPost from '../../queries/GetPost';
 import { Query } from 'react-apollo';
 import EditPost from './EditPost';
+import { withRouter } from 'react-router-dom';
 
 class EditPostContainer extends Component {
     render() {
@@ -10,7 +11,6 @@ class EditPostContainer extends Component {
               {({ loading, error, data }) => {
                   if (loading) return <div>Loading...</div>;
                   if (error) return `Error! ${error}`;
-                  console.log(this.props.data);
                   const { post } = data;
                   return (
                       <EditPost post={post}/>
@@ -21,4 +21,4 @@ class EditPostContainer extends Component {
     }
 }
 
-export default EditPostContainer;
+export default withRouter(EditPostContainer);
