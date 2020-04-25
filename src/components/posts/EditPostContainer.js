@@ -13,7 +13,7 @@ class EditPostContainer extends Component {
                   if (error) return `Error! ${error}`;
                   const { post } = data;
                   return (
-                      <EditPost post={post}/>
+                      <EditPost currentUser={this.props.data.currentUser} post={post}/>
                   );
               }}
             </Query>

@@ -12,6 +12,18 @@ class EditPost extends Component {
         this.state = { errors: [] };
     }
 
+    componentDidMount() {
+        if (this.props.post.creator.id !== this.props.currentUser.id) {
+            this.props.history.push("/not_authorized");
+        }
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.post.creator.id !== this.props.currentUser.id) {
+            this.props.history.push("/not_authorized");
+        }
+    }
+
     onSubmit(post) {
         //event.preventDefault();
         console.log(post);

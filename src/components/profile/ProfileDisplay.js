@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 class ProfileDisplay extends Component {
     render() {
         const { name, bio, languages } =  this.props.profile;
-        console.log(this.props.profile);
         return (
           <div style={{textAlign: 'center'}}>
               <h4>Profile</h4>

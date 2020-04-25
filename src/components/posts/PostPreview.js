@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { graphql } from 'react-apollo';
 import getPost from '../../queries/GetPost';
 import Card from 'react-bootstrap/Card';
+import ReviewList from '../reviews/ReviewList';
+import PostReview from '../reviews/PostReview';
 
 class PostPreview extends Component {
 
@@ -32,6 +34,9 @@ class PostPreview extends Component {
                       <Link to={`/posts/${this.props.match.params.id}`} className="btn btn-success btn-lg">Start</Link>
                   </Card.Footer>
               </Card>
+              <br/>
+              <PostReview id={this.props.match.params.id}/>
+              <ReviewList id={this.props.match.params.id}/>
           </div>
         )
     }
