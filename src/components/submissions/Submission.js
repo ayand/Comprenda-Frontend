@@ -37,9 +37,9 @@ class Submission extends Component {
         }
     }
 
-    shouldComponentUpdate(nextProps, nextState) {
+    /*shouldComponentUpdate(nextProps, nextState) {
         return true;
-    }
+    }*/
 
     render() {
         if (!this.props.data.submission) {

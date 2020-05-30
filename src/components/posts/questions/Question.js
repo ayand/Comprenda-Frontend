@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 
-class Question extends Component {
+/*class Question extends Component {
 
     constructor(props) {
         super(props);
@@ -31,6 +31,33 @@ class Question extends Component {
             </div>
         );
     }
+
+}*/
+
+const Question = ({ onAnswer, question, index }) => {
+
+  const [answer, setAnswer] = useState('');
+
+  const answerQuestion = (a) => {
+      onAnswer({ question: question.id, answer: a });
+      setAnswer(a);
+  }
+
+  const { text, choices } = question;
+  return (
+      <div className="jumbotron" style={{backgroundColor: '#cefab1', border: '3px solid #4ba310', paddingTop: '25px', paddingBottom: '25px'}}>
+          <h5>{index}. {text}</h5>
+          <Form>
+              <fieldset>
+                  <Form.Group value={answer}>
+                      {choices.map((choice, i) => (
+                        <Form.Check type="radio" checked={choice === answer} key={i} id={choice} label={choice} onChange={(e) => { answerQuestion(choice); }}/>
+                      ))}
+                  </Form.Group>
+              </fieldset>
+          </Form>
+      </div>
+  );
 
 }
 

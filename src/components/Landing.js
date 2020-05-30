@@ -1,13 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Landing extends Component {
-    render() {
-        return (
-          <div>
-              <h3>Landing</h3>
-          </div>
-        )
-    }
+const Landing = () => {
+  return (
+    <div>
+        <h3>Landing</h3>
+    </div>
+  )
 }
 
 export default Landing;

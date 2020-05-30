@@ -6,7 +6,6 @@ import PostCard from './PostCard';
 import Button from 'react-bootstrap/Button';
 
 const PostSearch = (props) => {
-    //console.log(props.match.params.search_term);
     const [index, setIndex] = useState(1);
     const [posts, setPosts] = useState([]);
     const [more, setMore] = useState(true);

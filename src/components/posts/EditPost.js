@@ -45,21 +45,6 @@ class EditPost extends Component {
               this.setState({ errors })
             }
         })
-        /*const { id } = this.props.post;
-        const { title, body, description } = this.state;
-        console.log(id);
-        this.props.mutate({
-            variables: { id, title, body, description }
-        })
-        .then(() => {console.log(this.props); this.props.history.push(`/posts/${id}`)})
-        .catch(res => {
-            console.log(res);
-            if (res.graphQLErrors) {
-              const errors = res.graphQLErrors.map(err => err.message);
-              console.log(errors);
-              this.setState({ errors })
-            }
-        })*/
     }
 
     render() {

@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
-
 
 import SignupForm from '../forms/SignupForm';
 import mutation from '../../mutations/Signup';
@@ -63,17 +60,6 @@ class Signup extends Component {
                         <SignupForm onSubmit={this.onSubmit.bind(this)}/>
                     </div>
                 </div>
-                <Modal show={this.state.passwordMismatchModal} onHide={this.dismissMismatchModal.bind(this)}>
-                    <Modal.Header closeButton>
-                        <Modal.Title>Signup Error</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>Password must match in both password fields</Modal.Body>
-                    <Modal.Footer>
-                        <Button variant="success" onClick={this.dismissMismatchModal.bind(this)}>
-                            Ok
-                        </Button>
-                    </Modal.Footer>
-                </Modal>
             </div>
         )
     }

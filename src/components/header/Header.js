@@ -1,22 +1,22 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import query from '../../queries/CurrentUser';
 import mutation from '../../mutations/Logout';
 import { graphql } from 'react-apollo';
 
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
-import { withRouter } from 'react-router-dom';
 
-class Header extends Component {
+const Header = ({ data, mutate }) => {
 
-    onLogoutClick() {
-        this.props.mutate({
+    const onLogoutClick = () => {
+        console.log("Log out");
+        mutate({
             refetchQueries: [{ query }]
         });
     }
 
-    renderButtons() {
-        const { loading, currentUser } = this.props.data;
+    const renderButtons = () => {
+        const { loading, currentUser } = data;
 
         if (loading) {
             return <div/>;
@@ -31,7 +31,7 @@ class Header extends Component {
                           <Nav.Link href="/profile">My Profile</Nav.Link>
                       </Fragment>
                     )}
-                    <Nav.Link onClick={this.onLogoutClick.bind(this)}>Logout</Nav.Link>
+                    <Nav.Link onClick={onLogoutClick}>Logout</Nav.Link>
                 </Nav>
             )
         }
@@ -43,17 +43,16 @@ class Header extends Component {
         )
     }
 
-    render() {
-        return (
-          <Navbar collapseOnSelect expand="lg" bg="success" variant="dark">
-              <Navbar.Brand href={(this.props.data.currentUser ? "/dashboard" : "/")}>Comprenda</Navbar.Brand>
-              <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-              <Navbar.Collapse id="responsive-navbar-nav">
-                  {this.renderButtons()}
-              </Navbar.Collapse>
-          </Navbar>
-        )
-    }
+    return (
+      <Navbar collapseOnSelect expand="lg" bg="success" variant="dark">
+          <Navbar.Brand href={(data.currentUser ? "/dashboard" : "/")}>Comprenda</Navbar.Brand>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse id="responsive-navbar-nav">
+              {renderButtons()}
+          </Navbar.Collapse>
+      </Navbar>
+    )
+
 }
 
-export default withRouter(graphql(query)(graphql(mutation)(Header)));
+export default graphql(query)(graphql(mutation)(Header));

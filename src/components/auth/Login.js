@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import LoginForm from '../forms/LoginForm';
+import ErrorMessage from '../error-message/ErrorMessage';
 import mutation from '../../mutations/Login';
 import { graphql } from 'react-apollo';
 import query from '../../queries/CurrentUser';
@@ -9,7 +10,7 @@ class Login extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { errors: [] };
+        this.state = { showModal: false, errors: [] };
     }
 
     componentDidUpdate(prevProps) {
@@ -24,15 +25,28 @@ class Login extends Component {
         }
     }
 
+    openModal() {
+        console.log("Opening modal")
+        this.setState({ showModal: true });
+    }
+
+    closeModal() {
+        this.setState({ showModal: false });
+    }
+
     onSubmit({ email, password }) {
         //console.log(password);
         this.props.mutate({
             variables: { email, password },
             refetchQueries: [{ query }]
         }).catch(res => {
-            const errors = res.graphQLErrors.map(err => err.message);
-            console.log(errors);
-            this.setState({ errors })
+            if (res.graphQLErrors) {
+              const errors = res.graphQLErrors.map(err => err.message);
+              console.log(errors);
+              this.setState({ errors }, () => {
+                  this.openModal();
+              })
+            }
         })
     }
 
@@ -51,10 +65,12 @@ class Login extends Component {
                         <LoginForm onSubmit={this.onSubmit.bind(this)}/>
                     </div>
                 </div>
-
+                <ErrorMessage errors={this.state.errors} show={this.state.showModal} closeFunc={this.closeModal.bind(this)}/>
             </div>
         )
     }
 }
+
+//const Login = ()
 
 export default graphql(query)(graphql(mutation)(Login));
