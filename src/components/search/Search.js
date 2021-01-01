@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import SearchForm from '../forms/SearchForm';
 
 const Search = () => {
-  const entities = ["Posts", "Profiles"];
+  const entities = ["Posts", "Users"];
   console.log("Rendering search");
   return (
     <div className="container">

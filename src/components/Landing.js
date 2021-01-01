@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Landing = () => {
+const Landing = (props) => {
   return (
     <div>
         <h3>Landing</h3>

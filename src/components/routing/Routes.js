@@ -41,7 +41,7 @@ const Routes = () => {
               <Route exact path="/edit_post/:id" component={requireAuth(EditPostContainer)}/>
               <Route exact path="/search" component={requireAuth(Search)}/>
               <Route exact path="/search/posts/:search_term" component={requireAuth(PostSearch)}/>
-              <Route exact path="/search/profiles/:search_term" component={requireAuth(ProfileSearch)}/>
+              <Route exact path="/search/users/:search_term" component={requireAuth(ProfileSearch)}/>
               <Route exact path="/submissions/:id" component={requireAuth(Submission)}/>
               <Route exact path="/not_authorized" component={requireAuth(NotAuthorized)}/>
           </Switch>

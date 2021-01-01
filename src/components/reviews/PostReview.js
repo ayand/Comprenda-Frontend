@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
 import mutation from '../../mutations/CreateReview';
-import query from '../../queries/GetReviews';
+import query from '../../queries/CurrentUser';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Rater from 'react-rater'
@@ -11,6 +11,7 @@ class PostReview extends Component {
 
     constructor(props) {
         super(props);
+        console.log(this.props.data);
         this.state = { rating: 0, text: "", errors: [] };
     }
 
@@ -56,4 +57,4 @@ class PostReview extends Component {
     }
 }
 
-export default graphql(mutation)(PostReview);
+export default (graphql(mutation)(PostReview));
